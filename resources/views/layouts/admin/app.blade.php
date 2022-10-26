@@ -10,11 +10,16 @@
     <link rel="shortcut icon" href="">
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
-    <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/vendor.min.css">
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/vendor/icon-set/style.css">
+    <!-- CSS Implementing Plugins -->
+    @if(app()->getLocale() != 'en')
     <!-- CSS Front Template -->
-    <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=1.0">
+        <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme_ar.minc619.css?v=1.0">
+    @else
+    <!-- CSS Front Template -->
+        <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=1.0">
+    @endif
     @stack('css_or_js')
 
     <style>
@@ -43,8 +48,8 @@
         }
 
         .flex-start {
-            display:flex;
-            align-items:flex-start;
+            display: flex;
+            align-items: flex-start;
         }
 
         .flex-end {
@@ -67,7 +72,7 @@
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/toastr.css">
 </head>
 
-<body class="footer-offset">
+<body class="footer-offset" @if(app()->getLocale() != 'en') dir="rtl" @endif>
 
 {{--loader--}}
 <div class="container">
@@ -112,7 +117,8 @@
                                     <i class="tio-shopping-cart-outlined"></i> {{ translate('You have new order, Check Please.') }}
                                 </h2>
                                 <hr>
-                                <button onclick="check_order()" class="btn btn-primary">{{ translate('Ok, let me check') }}</button>
+                                <button onclick="check_order()"
+                                        class="btn btn-primary">{{ translate('Ok, let me check') }}</button>
                             </center>
                         </div>
                     </div>
@@ -284,19 +290,20 @@
 </script>
 <script>
     @if(Helpers::module_permission_check('order_management'))
-        setInterval(function () {
-            $.get({
-                url: '{{route('admin.get-restaurant-data')}}',
-                dataType: 'json',
-                success: function (response) {
-                    let data = response.data;
-                    if (data.new_order > 0) {
-                        playAudio();
-                        $('#popup-modal').appendTo("body").modal('show');
-                    }
-                },
-            });
-        }, 10000);
+    setInterval(function () {
+        $.get({
+            url: '{{route('admin.get-restaurant-data')}}',
+            dataType: 'json',
+            success: function (response) {
+                let data = response.data;
+                if (data.new_order > 0) {
+                    playAudio();
+                    $('#popup-modal').appendTo("body").modal('show');
+                }
+            },
+        });
+    }, 10000);
+
     @endif
 
     function check_order() {
@@ -312,7 +319,7 @@
             cancelButtonColor: 'default',
             confirmButtonColor: '#FC6A57',
             cancelButtonText: '{{translate("No")}}',
-            confirmButtonText:'{{translate("Yes")}}',
+            confirmButtonText: '{{translate("Yes")}}',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
@@ -334,14 +341,14 @@
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
-                $('#'+id).submit()
+                $('#' + id).submit()
             }
         })
     }
 </script>
 
 <script>
-    function call_demo(){
+    function call_demo() {
         toastr.info('Update option is disabled for demo!', {
             CloseButton: true,
             ProgressBar: true
@@ -352,16 +359,16 @@
 {{-- Internet Status Check --}}
 <script>
     //Internet Status Check
-    window.addEventListener('online', function() {
+    window.addEventListener('online', function () {
         toastr.success('{{translate('Became online')}}');
     });
-    window.addEventListener('offline', function() {
+    window.addEventListener('offline', function () {
         toastr.error('{{translate('Became offline')}}');
     });
 
     //Internet Status Check (after any event)
-    document.body.addEventListener("click", function(event) {
-        if(window.navigator.onLine === false) {
+    document.body.addEventListener("click", function (event) {
+        if (window.navigator.onLine === false) {
             toastr.error('{{translate('You are in offline')}}');
             event.preventDefault();
         }
