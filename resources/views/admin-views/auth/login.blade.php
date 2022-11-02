@@ -139,24 +139,24 @@
                             <!-- End Checkbox -->
 
                             {{-- recaptcha --}}
-                            @php($recaptcha = \App\CentralLogics\Helpers::get_business_settings('recaptcha'))
-                            @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                                <div id="recaptcha_element" style="width: 100%;" data-type="image"></div>
-                                <br/>
-                            @else
-                                <div class="row p-2">
-                                    <div class="col-6 pr-0">
-                                        <input type="text" class="form-control form-control-lg" name="default_captcha_value" value=""
-                                               placeholder="{{translate('Enter captcha value')}}" style="border: none" autocomplete="off">
-                                    </div>
-                                    <div class="col-6 input-icons" style="background-color: #FFFFFF; border-radius: 5px;">
-                                        <a onclick="javascript:re_captcha();">
-                                            <img src="{{ URL('/admin/auth/code/captcha/1') }}" class="input-field" id="default_recaptcha_id" style="display: inline;width: 90%; height: 75%">
-                                            <i class="tio-refresh icon"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
+{{--                            @php($recaptcha = \App\CentralLogics\Helpers::get_business_settings('recaptcha'))--}}
+{{--                            @if(isset($recaptcha) && $recaptcha['status'] == 1)--}}
+{{--                                <div id="recaptcha_element" style="width: 100%;" data-type="image"></div>--}}
+{{--                                <br/>--}}
+{{--                            @else--}}
+{{--                                <div class="row p-2">--}}
+{{--                                    <div class="col-6 pr-0">--}}
+{{--                                        <input type="text" class="form-control form-control-lg" name="default_captcha_value" value=""--}}
+{{--                                               placeholder="{{translate('Enter captcha value')}}" style="border: none" autocomplete="off">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 input-icons" style="background-color: #FFFFFF; border-radius: 5px;">--}}
+{{--                                        <a onclick="javascript:re_captcha();">--}}
+{{--                                            <img src="{{ URL('/admin/auth/code/captcha/1') }}" class="input-field" id="default_recaptcha_id" style="display: inline;width: 90%; height: 75%">--}}
+{{--                                            <i class="tio-refresh icon"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
 
 
                             <button type="submit" class="btn btn-lg btn-block btn-primary">{{translate('sign_in')}}</button>
