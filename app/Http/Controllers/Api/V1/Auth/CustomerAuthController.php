@@ -182,6 +182,7 @@ class CustomerAuthController extends Controller
 
     public function login(Request $request)
     {
+
         if($request->has('email_or_phone')) {
             $user_id = $request['email_or_phone'];
             $validator = Validator::make($request->all(), [

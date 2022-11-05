@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \Profclems\PostmanCollectionGenerator\PostmanCollectionServiceProvider::class,
 
         /*
          * Application Service Providers...

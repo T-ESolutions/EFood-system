@@ -181,6 +181,8 @@
       <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/profclems/postman-collection-generator" />
+      <path value="$PROJECT_DIR$/vendor/andreaselia/laravel-api-to-postman" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
