@@ -1260,4 +1260,6 @@
   'Number is ready to register' => 'Number is ready to register',
   'Email sent successfully.' => 'Email sent successfully.',
   'Password changed successfully.' => 'Password changed successfully.',
+  'Want to delete this attribute ?' => 'Want to delete this attribute  ',
+  'Product name has been taken.' => 'Product name has been taken.',
 );

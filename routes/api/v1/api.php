@@ -121,9 +121,6 @@ Route::group(['namespace' => 'Api\V1', 'middleware'=>'localization'], function (
         });
     });
 
-    Route::group(['prefix' => 'banners'], function () {
-        Route::get('/', 'BannerController@get_banners');
-    });
 
     Route::group(['prefix' => 'coupon', 'middleware' => 'auth:api'], function () {
         Route::get('list', 'CouponController@list');

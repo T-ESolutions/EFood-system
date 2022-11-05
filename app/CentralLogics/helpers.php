@@ -822,7 +822,7 @@ class Helpers
 
 function translate($key)
 {
-    $local = session()->has('local') ? session('local') : 'en';
+    $local = session()->has('local') ? session('local') : 'ar';
     App::setLocale($local);
     $lang_array = include(base_path('resources/lang/' . $local . '/messages.php'));
     $processed_key = ucfirst(str_replace('_', ' ', Helpers::remove_invalid_charcaters($key)));
